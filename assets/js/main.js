@@ -1,36 +1,59 @@
-const points = (twoPointers, threePointers) => twoPointers * 2 + threePointers * 3;
-points();
+function getMissingLetters(s) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+	return [...alphabet].filter(x => !s.match(x)).join('');
+}
 
-const testData = `Test.assertEquals(points(1, 1), 5)
-Test.assertEquals(points(1, 2), 8)
-Test.assertEquals(points(2, 1), 7)
-Test.assertEquals(points(2, 2), 10)
-Test.assertEquals(points(69, 420), 1398)`;
+console.log(getMissingLetters);
+
+const testData = `Test.assertEquals(getMissingLetters("abcdefgpqrstuvwxyz"), "hijklmno")
+Test.assertEquals(getMissingLetters("zyxwvutsrq"), "abcdefghijklmnop")
+Test.assertEquals(getMissingLetters(""), "abcdefghijklmnopqrstuvwxyz")
+Test.assertEquals(getMissingLetters("abcdefghijklmnopqrstuvwxyz"), "")
+Test.assertEquals(getMissingLetters("qinjwm"), "abcdefghkloprstuvxyz")
+Test.assertEquals(getMissingLetters("luiqtkgwzheapr"), "bcdfjmnosvxy")
+Test.assertEquals(getMissingLetters("qankj"), "bcdefghilmoprstuvwxyz")
+Test.assertEquals(getMissingLetters("bawgeuskmfcrpodnxztviy"), "hjlq")
+Test.assertEquals(getMissingLetters("gdpna"), "bcefhijklmoqrstuvwxyz")
+Test.assertEquals(getMissingLetters("hbi"), "acdefgjklmnopqrstuvwxyz")
+Test.assertEquals(getMissingLetters("djxifockvwhaqbnmstzpylu"), "egr")
+Test.assertEquals(getMissingLetters("gastzwjcnvoprfmxd"), "behiklquy")
+Test.assertEquals(getMissingLetters("xuti"), "abcdefghjklmnopqrsvwyz")
+Test.assertEquals(getMissingLetters("abc"), "defghijklmnopqrstuvwxyz")
+Test.assertEquals(getMissingLetters("kchiatvmbqrdsyopwju"), "efglnxz")
+Test.assertEquals(getMissingLetters("xbkj"), "acdefghilmnopqrstuvwyz")
+Test.assertEquals(getMissingLetters("cbvkyroes"), "adfghijlmnpqtuwxz")
+Test.assertEquals(getMissingLetters("s"), "abcdefghijklmnopqrtuvwxyz")
+Test.assertEquals(getMissingLetters("idvgzujmswloefcthb"), "aknpqrxy")
+Test.assertEquals(getMissingLetters("fmoraygevhkxzutcjd"), "bilnpqsw")
+Test.assertEquals(getMissingLetters("vuynqpaf"), "bcdeghijklmorstwxz")
+Test.assertEquals(getMissingLetters("j"), "abcdefghiklmnopqrstuvwxyz")`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);
 
 console.log(funk);
-// const ergebnis = testData.match(/(?<=\), ").*(?="\)))/g);  mit String
+console.log(ergebnis);
+// mit String
+// const ergebnis = testData.match(/(?<=\), ").*(?="\)))/g);
 
 function consolo() {
-  return funk.map((x, i) => `const consolo${i + 1} = ${x}`).join('; <br>');
+  return funk.map((x, i) => `const consolo${i + 1} = ${x}`).join("; <br>");
 }
 
 function displayErgebnis() {
-  return ergebnis.map((x, i) => `const ergebnis${i + 1} = ${x}`).join('; <br>');
+  return ergebnis.map((x, i) => `const ergebnis${i + 1} = ${x}`).join("; <br>");
 }
 
-console.log(consolo());
+// console.log(consolo());
 console.log(displayErgebnis());
 
 const resultFunk = consolo();
 const resultErgebnis = displayErgebnis();
 
 // Make a div
-const div = document.createElement('div');
+const div = document.createElement("div");
 // add a class of wrapper to it
-div.classList.add('wrapper');
+div.classList.add("wrapper");
 
 // put it into the body
 document.body.appendChild(div);
@@ -60,8 +83,8 @@ function generatePlayerCard(funki, ergebnisse, numm, fun) {
   return html;
 }
 
-const cards = document.createElement('div');
-cards.classList.add('cards');
+const cards = document.createElement("div");
+cards.classList.add("cards");
 
 let cardsHTML = [];
 for (let i = 0; i < funk.length; i++) {
@@ -69,17 +92,17 @@ for (let i = 0; i < funk.length; i++) {
 }
 
 cards.innerHTML = cardsHTML;
-div.insertAdjacentElement('beforebegin', cards);
+div.insertAdjacentElement("beforebegin", cards);
 
-const buttonsDelete = document.querySelectorAll('.delete');
+const buttonsDelete = document.querySelectorAll(".delete");
 // make out delete function
 function deleteCard(event) {
   const buttonThatGotClicked = event.currentTarget;
   // buttonThatGotClicked.parentElement.remove();
-  buttonThatGotClicked.closest('.playerCard').remove();
+  buttonThatGotClicked.closest(".playerCard").remove();
 }
 
 // loop over them and attach a listener
-buttonsDelete.forEach(button => button.addEventListener('click', deleteCard));
+buttonsDelete.forEach((button) => button.addEventListener("click", deleteCard));
 
 // console.log(document.getElementsByClassName('playerCard'));
