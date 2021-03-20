@@ -4,7 +4,7 @@ function numbersSum(arr) {
 }
 
 const result = numbersSum([1, 2, '13', '4', '645']);
-console.log(result);
+console.log(`${result}test`);
 
 const testData = `Test.assertEquals(numbersSum([1, 2, "13", "4", "645"]), 3)
 Test.assertEquals(numbersSum([true, false, "123", "75"]), 0)
