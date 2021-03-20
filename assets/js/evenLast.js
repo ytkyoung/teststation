@@ -1,18 +1,31 @@
-function numbersSum(arr) {
-  const onlyNumbers = arr.filter(x => typeof x === 'number');
-  return onlyNumbers.length ? onlyNumbers.reduce((a, b) => a + b) : 0;
-}
+const evenLast = arr =>
+  arr.length ? arr.map((x, i) => (!(i % 2) ? x : 0)).reduce((a, b) => a + b) * arr[arr.length - 1] : 0;
 
-const result = numbersSum([1, 2, '13', '4', '645']);
+const result = evenLast([1, 4, 5, 6, 7, 2, 3]);
 console.log(result);
 
-const testData = `Test.assertEquals(numbersSum([1, 2, "13", "4", "645"]), 3)
-Test.assertEquals(numbersSum([true, false, "123", "75"]), 0)
-Test.assertEquals(numbersSum([1, 2, 3, 4, 5, true]), 15)
-Test.assertEquals(numbersSum(["abcd", 1234, false, true, 564, "hii"]), 1798)
-Test.assertEquals(numbersSum(["abcd", "abc45", "assssd", true]), 0)
-Test.assertEquals(numbersSum([]), 0)
-Test.assertEquals(numbersSum(["cghyki", "cd", 12114, 786, true, "me", "bey"]), 12900)`;
+const testData = `Test.assertEquals(evenLast([]), 0)
+Test.assertEquals(evenLast([1, 3, 3, 1, 10]), 140)
+Test.assertEquals(evenLast([-11, 3, 3, 1, 10]), 20)
+Test.assertEquals(evenLast([1, 31, 3, 11, 0]), 0)
+Test.assertEquals(evenLast([1, 2, 3, 4, 5, 6, 8]), 136)
+Test.assertEquals(evenLast([2, 3, 4, 5]), 30)
+Test.assertEquals(evenLast([2, 4, 6, 8, 9, 11]), 187)
+Test.assertEquals(evenLast([6, 5, 7, 2, 1]), 14)
+Test.assertEquals(evenLast([2, 2, 2, 2]), 8)
+Test.assertEquals(evenLast([5, 1, 2, 3, 4, 6, 7, 8, 4]), 88)
+Test.assertEquals(evenLast([2, 4, 3, 2, 3, 4, 4, 5]), 60)
+Test.assertEquals(evenLast([7, 23, 22, 6, 8, 2]), 74)
+Test.assertEquals(evenLast([33, 2, -22, 5, -6, 5]), 25)
+Test.assertEquals(evenLast([5, 6, 7, 3, 22, 2]), 68)
+Test.assertEquals(evenLast([3, 4, 5, 6, 7, 8]), 120)
+Test.assertEquals(evenLast([1, 4, 5, 6, 7, 2, 3]), 48)
+Test.assertEquals(evenLast([2, 7, 0, 3, 4, 8, 3]), 27)
+Test.assertEquals(evenLast([9, 3, -6, 2, 7, 8]), 80)
+Test.assertEquals(evenLast([7, 7, 7, 7, 1]), 15)
+Test.assertEquals(evenLast([6, 7, 8, 9, 10, 3, 4]), 112)
+Test.assertEquals(evenLast([9, 8, 7, 6, 5, 4, 3, 2]), 48)
+Test.assertEquals(evenLast([]), 0)`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);
