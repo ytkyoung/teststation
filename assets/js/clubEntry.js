@@ -1,4 +1,4 @@
-const clubEntry = (word) => (word.match(/(.)\1/g)[0].charCodeAt(0) - 96) * 4;
+const clubEntry = (word) => (word.match(/(.)\1/g)[0].charAt(0).charCodeAt(0) - 96) * 4;
 
 const result = clubEntry('hill');
 

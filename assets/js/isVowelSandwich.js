@@ -1,6 +1,8 @@
-function isVowelSandwich(str) {
-  return !!(str.length === 3 && str.match(/[^aeiuo][aeiou][^aeiuo]/g));
-}
+// function isVowelSandwich(str) {
+//   return !!(str.length === 3 && str.match(/[^aeiuo][aeiou][^aeiuo]/g));
+// }
+
+const isVowelSandwich = (str) => !!(str.length === 3 && str.match(/[^aeiuo][aeiou][^aeiuo]/g));
 
 const result = isVowelSandwich('cat');
 console.log(result);
