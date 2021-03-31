@@ -1,16 +1,20 @@
-function tetra(n) {
-  return (n * (n + 1) * (n + 2)) / 6;
+function combinations(...items) {
+  return items.filter((x) => x !== 0).reduce((a, b) => a * b);
 }
 
-const result = tetra(5);
+const result = combinations(3, 7, 4);
 console.log(result);
 
-const testData = `Test.assertEquals(tetra(1), 1)
-Test.assertEquals(tetra(2), 4)
-Test.assertEquals(tetra(3), 10)
-Test.assertEquals(tetra(4), 20)
-Test.assertEquals(tetra(5), 35)
-Test.assertEquals(tetra(9), 165)`;
+const testData = `Test.assertEquals(combinations(2), 2)
+Test.assertEquals(combinations(2, 3), 6)
+Test.assertEquals(combinations(3, 5), 15)
+Test.assertEquals(combinations(5, 6, 7), 210)
+Test.assertEquals(combinations(5, 5, 5, 5), 625)
+Test.assertEquals(combinations(3, 6, 9), 162)
+Test.assertEquals(combinations(2, 3, 4, 5, 6, 7, 8, 9, 10), 3628800)
+Test.assertEquals(combinations(4, 5, 6), 120)
+Test.assertEquals(combinations(5, 6, 7, 8), 1680)
+Test.assertEquals(combinations(6, 7, 0), 42)`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);
