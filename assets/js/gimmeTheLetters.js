@@ -1,26 +1,26 @@
-function encrypt(word) {
-  const vocals = {
-    a: 0,
-    e: 1,
-    o: 2,
-    u: 3,
-  };
-
-  return `${word
-    .split('')
-    .reverse()
-    .map((x) => (x.match(new RegExp(`[${Object.keys(vocals)}]`, 'g')) ? x.replace(x, vocals[x]) : x))
-    .join('')}aca`;
+function gimmeTheLetters(spectrum) {
+  const letters = spectrum.split('-').map((x) => x.charCodeAt());
+  return Array.from(Array(letters[1] - letters[0] + 1))
+    .map((e, i) => i + letters[0])
+    .map((x) => String.fromCharCode(x))
+    .join('');
 }
 
-const result = encrypt('banana');
+const result = gimmeTheLetters('Q-Z');
 console.log(result);
 
-const testData = `Test.assertEquals(encrypt("karaca"), "0c0r0kaca")
-Test.assertEquals(encrypt("burak"), "k0r3baca")
-Test.assertEquals(encrypt("banana"), "0n0n0baca")
-Test.assertEquals(encrypt("alpaca"), "0c0pl0aca")
-Test.assertEquals(encrypt("hello"), "2ll1haca")`;
+const testData = `Test.assertEquals(gimmeTheLetters("a-z"), "abcdefghijklmnopqrstuvwxyz")
+Test.assertEquals(gimmeTheLetters("h-o"), "hijklmno")
+Test.assertEquals(gimmeTheLetters("Q-Z"), "QRSTUVWXYZ")
+Test.assertEquals(gimmeTheLetters("J-J"), "J")
+Test.assertEquals(gimmeTheLetters("a-b"), "ab")
+Test.assertEquals(gimmeTheLetters("A-A"), "A")
+Test.assertEquals(gimmeTheLetters("g-i"), "ghi")
+Test.assertEquals(gimmeTheLetters("H-I"), "HI")
+Test.assertEquals(gimmeTheLetters("y-z"), "yz")
+Test.assertEquals(gimmeTheLetters("e-k"), "efghijk")
+Test.assertEquals(gimmeTheLetters("a-q"), "abcdefghijklmnopq")
+Test.assertEquals(gimmeTheLetters("F-O"), "FGHIJKLMNO")`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);

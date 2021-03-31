@@ -17,10 +17,10 @@ const result = encrypt('banana');
 console.log(result);
 
 const testData = `Test.assertEquals(encrypt("karaca"), "0c0r0kaca")
-Test.assertEquals(encrypt("burak"), "k0r3baca")
-Test.assertEquals(encrypt("banana"), "0n0n0baca")
-Test.assertEquals(encrypt("alpaca"), "0c0pl0aca")
-Test.assertEquals(encrypt("hello"), "2ll1haca")`;
+  Test.assertEquals(encrypt("burak"), "k0r3baca")
+  Test.assertEquals(encrypt("banana"), "0n0n0baca")
+  Test.assertEquals(encrypt("alpaca"), "0c0pl0aca")
+  Test.assertEquals(encrypt("hello"), "2ll1haca")`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);
@@ -54,8 +54,8 @@ document.body.appendChild(div);
 
 // make an unordered list
 const h2Test = `<h2>
-  ${funk[0]}
-</h2><p>${resultFunk} <br><br> ${resultErgebnis}</p>`;
+    ${funk[0]}
+  </h2><p>${resultFunk} <br><br> ${resultErgebnis}</p>`;
 
 // add three list items with the words "one, two three" in them
 // put that list into the above wrapper
@@ -65,14 +65,14 @@ function generatePlayerCard(funki, ergebnisse, numm, fun) {
   const farbeTrue = `${funki.toString()}` === ergebnisse;
 
   const html = `
-      <div class="playerCard">
-        <h2>${funki}</h2>
-        <p>${ergebnisse}<p>
-        <p>Test ${numm} ist ${farbeTrue}.</p>
-        <p>${fun}</p>
-        <div><button class="delete" type="button">&times; Delete</button></div>
-      </div>
-    `;
+        <div class="playerCard">
+          <h2>${funki}</h2>
+          <p>${ergebnisse}<p>
+          <p>Test ${numm} ist ${farbeTrue}.</p>
+          <p>${fun}</p>
+          <div><button class="delete" type="button">&times; Delete</button></div>
+        </div>
+      `;
 
   return html;
 }
