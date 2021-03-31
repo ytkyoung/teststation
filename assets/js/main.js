@@ -1,25 +1,18 @@
-function intWithinBounds(n, lower, upper) {
-  return n >= lower && n < upper && Number.isInteger(n);
+function numbersSum(arr) {
+  const onlyNumbers = arr.filter((x) => typeof x === 'number');
+  return onlyNumbers.length ? onlyNumbers.reduce((a, b) => a + b) : 0;
 }
-const result = intWithinBounds(3, 1, 9);
+
+const result = numbersSum([1, 2, '13', '4', '645']);
 console.log(result);
 
-const testData = `Test.assertEquals(intWithinBounds(3, 1, 9), true)
-Test.assertEquals(intWithinBounds(6, 1, 6), false)
-Test.assertEquals(intWithinBounds(4.5, 3, 8), false)
-Test.assertEquals(intWithinBounds(-5, -10, 6), true)
-Test.assertEquals(intWithinBounds(4, 0, 0), false)
-Test.assertEquals(intWithinBounds(10, 9, 11), true)
-Test.assertEquals(intWithinBounds(6.3, 2, 6), false)
-Test.assertEquals(intWithinBounds(6.3, 2, 10), false)
-Test.assertEquals(intWithinBounds(9, 2, 3), false)
-Test.assertEquals(intWithinBounds(9, 9, 9), false)
-Test.assertEquals(intWithinBounds(-3, -5, -2), true)
-Test.assertEquals(intWithinBounds(-3, -5, -3), false)
-Test.assertEquals(intWithinBounds(-3, -10, 10), true)
-Test.assertEquals(intWithinBounds(0, -3, 3), true)
-Test.assertEquals(intWithinBounds(0, 0, 1), true)
-Test.assertEquals(intWithinBounds(7, 7, 12), true)`;
+const testData = `Test.assertEquals(numbersSum([1, 2, "13", "4", "645"]), 3)
+Test.assertEquals(numbersSum([true, false, "123", "75"]), 0)
+Test.assertEquals(numbersSum([1, 2, 3, 4, 5, true]), 15)
+Test.assertEquals(numbersSum(["abcd", 1234, false, true, 564, "hii"]), 1798)
+Test.assertEquals(numbersSum(["abcd", "abc45", "assssd", true]), 0)
+Test.assertEquals(numbersSum([]), 0)
+Test.assertEquals(numbersSum(["cghyki", "cd", 12114, 786, true, "me", "bey"]), 12900)`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);

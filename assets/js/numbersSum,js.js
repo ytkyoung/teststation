@@ -1,5 +1,5 @@
 function numbersSum(arr) {
-  const onlyNumbers = arr.filter(x => typeof x === 'number');
+  const onlyNumbers = arr.filter((x) => typeof x === 'number');
   return onlyNumbers.length ? onlyNumbers.reduce((a, b) => a + b) : 0;
 }
 
@@ -89,6 +89,6 @@ function deleteCard(event) {
 }
 
 // loop over them and attach a listener
-buttonsDelete.forEach(button => button.addEventListener('click', deleteCard));
+buttonsDelete.forEach((button) => button.addEventListener('click', deleteCard));
 
 // console.log(document.getElementsByClassName('playerCard'));
