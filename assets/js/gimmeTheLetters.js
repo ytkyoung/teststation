@@ -6,6 +6,14 @@ function gimmeTheLetters(spectrum) {
     .join('');
 }
 
+// function gimmeTheLetters(sp){
+//     let s =''
+//     for (let i = sp.charCodeAt(0); i <= sp.charCodeAt(2); i++) {
+//       s+=String.fromCharCode(i)
+//     }
+//     return s
+// }
+
 const result = gimmeTheLetters('Q-Z');
 console.log(result);
 
