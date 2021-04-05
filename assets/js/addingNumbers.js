@@ -1,42 +1,39 @@
-function calc(str) {
-  const num1 = [...str].map((x) => x.charCodeAt()).join('');
-  const num2 = num1
-    .replace(/7/g, '1')
-    .split('')
-    .map((x) => +x);
-  return [...num1].map((x, i) => +x - num2[i]).reduce((a, c) => a + c);
+function add(numberOne, numberTwo) {
+  return [numberOne, numberTwo].map((x) => typeof x !== 'string' || x === '').filter((x) => x).length > 0
+    ? 'Invalid Operation'
+    : (+numberOne + +numberTwo).toString();
 }
-const result = calc('aaaaaddddrijkl');
 
+const result = add('111', '111');
 console.log(result);
 
-const testData = `Test.assertEquals(calc('ABCDabcd'), 12)
-Test.assertEquals(calc('cdefgh'), 0)
-Test.assertEquals(calc('ifkhchlhfde'), 6)
-Test.assertEquals(calc('aaaaaddddrijkl'), 36)
-Test.assertEquals(calc('abcdefghijklmnopqrstuvwxyz'), 18)
-Test.assertEquals(calc('AABBCC'), 12)
-Test.assertEquals(calc('ABCDEFGH'), 24)
-Test.assertEquals(calc('anmatmudtr'), 18)
-Test.assertEquals(calc('suwvete'), 6)
-Test.assertEquals(calc('edabit'), 6)
-Test.assertEquals(calc('EDABIT'), 6)
-Test.assertEquals(calc('SLOWLLLY'), 36)
-Test.assertEquals(calc('COMEnananan'), 42)
-Test.assertEquals(calc('coupdetat'), 12)
-Test.assertEquals(calc('arsenal'), 12)
-Test.assertEquals(calc('byoaaasglrrsA'), 18)
-Test.assertEquals(calc('byoglrrsA'), 0)
-Test.assertEquals(calc('eyyyhenDDDUEN'), 6)
-Test.assertEquals(calc('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 78)
-Test.assertEquals(calc('zyxwvutsrqpon'), 6)
-Test.assertEquals(calc('ZYXWVUTSR'), 6)`;
+// function add(numberOne, numberTwo) {
+//     return !numberOne || !numberTwo ? 'Invalid Operation' : `${+numberOne + +numberTwo}`;
+//   }
+
+// const add = (n1, n2) =>
+// 	/^-?\d+-?\d+$/.test(n1+n2)? String(+n1 + +n2) : 'Invalid Operation';
+
+const testData = `Test.assertEquals(add('91', '19'), '110');
+Test.assertEquals(add('123456789', '987654322'), '1111111111');
+Test.assertEquals(add('9999999', '1'), '10000000');
+Test.assertEquals(add('300', '3000'), '3300');
+Test.assertEquals(add('1000', '6200'), '7200');
+Test.assertEquals(add('-10', '-20'), '-30');
+Test.assertEquals(add('-100', '100'), '0');
+Test.assertEquals(add('0', '6200'), '6200');
+Test.assertEquals(add('', '6'), 'Invalid Operation');
+Test.assertEquals(add('', undefined), 'Invalid Operation');
+Test.assertEquals(add(null, '23'), 'Invalid Operation');
+Test.assertEquals(add('', '20'),"Invalid Operation");`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);
 
 console.log(funk);
-// const ergebnis = testData.match(/(?<=\), ").*(?="\)))/g);  mit String
+console.log(ergebnis);
+// mit String
+// const ergebnis = testData.match(/(?<=\), ").*(?="\)))/g);
 
 function consolo() {
   return funk.map((x, i) => `const consolo${i + 1} = ${x}`).join('; <br>');

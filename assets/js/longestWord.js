@@ -1,42 +1,34 @@
-function calc(str) {
-  const num1 = [...str].map((x) => x.charCodeAt()).join('');
-  const num2 = num1
-    .replace(/7/g, '1')
-    .split('')
-    .map((x) => +x);
-  return [...num1].map((x, i) => +x - num2[i]).reduce((a, c) => a + c);
-}
-const result = calc('aaaaaddddrijkl');
+const longestWord = (sentence) => sentence.split(' ').sort((a, b) => b.length - a.length)[0];
 
+const result = longestWord('Hello darkness my old friend');
 console.log(result);
 
-const testData = `Test.assertEquals(calc('ABCDabcd'), 12)
-Test.assertEquals(calc('cdefgh'), 0)
-Test.assertEquals(calc('ifkhchlhfde'), 6)
-Test.assertEquals(calc('aaaaaddddrijkl'), 36)
-Test.assertEquals(calc('abcdefghijklmnopqrstuvwxyz'), 18)
-Test.assertEquals(calc('AABBCC'), 12)
-Test.assertEquals(calc('ABCDEFGH'), 24)
-Test.assertEquals(calc('anmatmudtr'), 18)
-Test.assertEquals(calc('suwvete'), 6)
-Test.assertEquals(calc('edabit'), 6)
-Test.assertEquals(calc('EDABIT'), 6)
-Test.assertEquals(calc('SLOWLLLY'), 36)
-Test.assertEquals(calc('COMEnananan'), 42)
-Test.assertEquals(calc('coupdetat'), 12)
-Test.assertEquals(calc('arsenal'), 12)
-Test.assertEquals(calc('byoaaasglrrsA'), 18)
-Test.assertEquals(calc('byoglrrsA'), 0)
-Test.assertEquals(calc('eyyyhenDDDUEN'), 6)
-Test.assertEquals(calc('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 78)
-Test.assertEquals(calc('zyxwvutsrqpon'), 6)
-Test.assertEquals(calc('ZYXWVUTSR'), 6)`;
+// function longestWord(sentence) {
+//   const words = sentence.split(" ");
+//   const longest = Math.max(...words.map(w => w.length));
+//   return words.find(w => w.length === longest);
+// }
+
+// const longestWord = sentence => {
+//   const arr = sentence.split` `.map(a => a.length);
+//   const max = Math.max(...arr);
+//   const indexOfLongest = arr.indexOf(max);
+
+//   return sentence.split` `[indexOfLongest];
+//  }
+
+const testData = `Test.assertEquals(longestWord("Hello darkness my old friend"), "darkness")
+Test.assertEquals(longestWord("Hello there mate"), "Hello")
+Test.assertEquals(longestWord("Kayla's toy is plastic"), "Kayla's")
+Test.assertEquals(longestWord("Football is so cool!!!!!"), "cool!!!!!")`;
 
 const funk = testData.match(/(?<=\().*(?=,)/g);
 const ergebnis = testData.match(/(?<=\), ).*(?=\))/g);
 
 console.log(funk);
-// const ergebnis = testData.match(/(?<=\), ").*(?="\)))/g);  mit String
+console.log(ergebnis);
+// mit String
+// const ergebnis = testData.match(/(?<=\), ").*(?="\)))/g);
 
 function consolo() {
   return funk.map((x, i) => `const consolo${i + 1} = ${x}`).join('; <br>');
