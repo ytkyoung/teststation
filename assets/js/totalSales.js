@@ -40,3 +40,8 @@ console.log(result);
 //     .split('')
 //     .reduce((a, c) => +a + +c);
 // }
+
+// function totalSales(sales, product) {
+// 	let p = sales[0]
+// 	return p.includes(product)?sales.slice(1).map(el=>el[p.indexOf(product)]).reduce((a,b)=>a+b):'Product not found'
+// }
