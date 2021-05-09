@@ -22,6 +22,8 @@ const result = sumMissingNumbers([17, 16, 15, 10, 11, 12])
 console.log(result)
 const resultAnzeige = (document.getElementById('demo').innerHTML = result)
 
+// https://edabit.com/challenge/257hD8dzvsyR4G839
+
 // function sumMissingNumbers(arr) {
 //   const [a, b] = [Math.min(...arr), Math.max(...arr)];
 // 	return arr.reduce((a, c) => a - c, (a + b) * (b - a + 1) / 2);
